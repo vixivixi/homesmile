@@ -1,2 +1,2 @@
 $path = realpath('/img');
-ss
+echo 'testing web work';
