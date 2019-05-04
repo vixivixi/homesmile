@@ -5,6 +5,7 @@ function OnlyDigits($str){
   $res = preg_replace("/[^0-9]/", "", $str );
   return $res;
 }
+
 function bubblesort($arr){
 
   $size = count($arr)-1;
