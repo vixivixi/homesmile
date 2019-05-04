@@ -1,4 +1,14 @@
 <?
+function wJson($arr){
+  
+
+}
+
+function pre($str){
+echo '<pre>';
+  var_dump($str);
+echo '<pre>';
+}
 
 function OnlyDigits($str){
   //https://stackoverflow.com/questions/33993461/php-remove-all-non-numeric-characters-from-a-string

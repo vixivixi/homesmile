@@ -19,13 +19,15 @@ foreach ($Iterator as $info) {
 
 }
 $result=bubblesort($files);
-pre($result);
+//pre(json_encode($result));
+$json = 'json/result.json';
+$current = file_get_contents($json);
+$current = json_encode($result);
+file_put_contents($json, $current);
 
-function pre($str){
-echo '<pre>';
-  var_dump($str);
-echo '<pre>';
-}
+
+// pre($result);
+
 
 
 // var_dump($Directory);
