@@ -1,3 +1,6 @@
 <?
-$path = realpath('/img');
-echo 'testing web work';
+$path = realpath('\img');
+var_dump($path);
+echo('repo');
+//
+?>
