@@ -19,7 +19,7 @@ function prex($str)
     exit();
 }
 
-function optimizenlyDigits($str)
+function onlyDigits($str)
 {
     //https://stackoverflow.com/questions/33993461/php-remove-all-non-numeric-characters-from-a-string
     $res = preg_replace("/[^0-9]/", "", $str);
