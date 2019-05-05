@@ -2,7 +2,6 @@
 
 /**
  * This file index image dir and produce js file
-
  *
  * @category Array_Processing
  * @package  Pagepackage
@@ -10,7 +9,6 @@
  * @license  NoLicense
  * @version  GIT: $Id$ In development. Very unstable.
  * @link     NoLink
- * 
  */
 
 require 'commands/main_class.php';
@@ -23,7 +21,7 @@ $Directory = new RecursiveDirectoryIterator($path);
 // $filter = new MyRecursiveFilterIterator($Directory);
 
 $Iterator = new RecursiveIteratorIterator($Directory);
-$tool = new tool();
+$tool = new Tool();
 
 $files = array();
 $pre = array();
@@ -40,7 +38,7 @@ foreach ($Iterator as $info) {
         $files[] = $pre;
     }
 }
-$result=tool::bubblesort($files);
+$result=Tool::bubblesort([1,2,3]);//$files);
 $jsonname = 'result.json';
 $json = $JSONPATH.$jsonname;
 $current = file_get_contents($json);
