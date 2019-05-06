@@ -1,1 +1,4 @@
-*.rar
+.idea
+img
+json
+vendor
