@@ -5,7 +5,6 @@ namespace App\commands;
 class Tool
 {
 
-
     public function pre($str)
     {
         echo '<pre>';

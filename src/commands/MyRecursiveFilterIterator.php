@@ -3,7 +3,6 @@
 namespace App\commands;
 
 class MyRecursiveFilterIterator extends \RecursiveFilterIterator
-
 {
     public function accept()
     {
