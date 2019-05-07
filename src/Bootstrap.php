@@ -10,18 +10,18 @@
  * @version  GIT: $Id$ In development. Very unstable.
  * @link     NoLink
  */
+namespace App;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 
-require 'commands/main_class.php';
-$IMGDIR = 'img/';
-$JSONPATH = 'json/';
+class Bootstrap
+{
 
-$path = realpath($IMGDIR);
+public function run($IMGDIR, $JSONPATH){
+$path = realpath(__DIR__.'/'.$IMGDIR);
 $Directory = new RecursiveDirectoryIterator($path);
-
-// $filter = new MyRecursiveFilterIterator($Directory);
-
 $Iterator = new RecursiveIteratorIterator($Directory);
-$tool = new Tool();
+$tool = new commands\Tool();
 
 $files = array();
 $pre = array();
@@ -31,18 +31,18 @@ foreach ($Iterator as $info) {
         $pre['path'] = $info->getPathname();
         $pre['size'] = getimagesize($info->getPathname())[3] ;
         $width = explode(' ', getimagesize($info->getPathname())[3])[0];
-        $pre['width'] = Tool::onlyDigits($width);
+        $pre['width'] = $tool::onlyDigits($width);
         $height = explode(' ', getimagesize($info->getPathname())[3])[1];
-        $pre['height'] = Tool::onlyDigits($height);
+        $pre['height'] = $tool::onlyDigits($height);
         $pre['type'] = getimagesize($info->getPathname())['mime'] ;
         $files[] = $pre;
     }
 }
-$result=Tool::bubblesort([1,2,3]);//$files);
+$result=$tool::bubblesort($files);
 $jsonname = 'result.json';
-$json = $JSONPATH.$jsonname;
+$json = __DIR__.'/'.$JSONPATH.$jsonname;
 $current = file_get_contents($json);
 $current = json_encode($result);
 file_put_contents($json, $current);
-
-?>
+}
+}
