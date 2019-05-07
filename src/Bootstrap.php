@@ -43,7 +43,7 @@ class Bootstrap
         $result=$tool::bubblesort($files);
         $jsonname = 'result.json';
         $json = __DIR__.'/'.$JSONPATH.$jsonname;
-        $current = file_get_contents($json);
+        //$current = file_get_contents($json);
         $current = json_encode($result);
         file_put_contents($json, $current);
     }
