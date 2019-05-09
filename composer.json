@@ -6,10 +6,10 @@
     },
 
     "require": {
-        "squizlabs/php_codesniffer": "@stable"
+        "squizlabs/php_codesniffer": "@stable",
+        "phpunit/phpunit": "^8.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "@stable",
         "phpmd/phpmd": "^2.6"
     },
     "autoload": {

@@ -13,14 +13,28 @@ use RecursiveIteratorIterator;
 class Bootstrap
 {
 
+    var $realpathimg, $pathjson;
+
+    public function __construct($IMGDIR, $JSONPATH)
+    {
+
+        if(is_dir(__DIR__.'/'.$IMGDIR))
+            $this->realpathimg=(realpath(__DIR__.'/'.$IMGDIR));
+        else echo $IMGDIR.' is not a folder';
+
+        if(is_dir(__DIR__.'/'.$JSONPATH))
+                $this->pathjson=(__DIR__.'/'.$JSONPATH);
+            else echo $JSONPATH.'this is not a folder';
+    }
+
     /**
      * @param $IMGDIR - great
      * @param $JSONPATH - great
      */
-    public function run($IMGDIR, $JSONPATH)
+    public function run()
     {
 
-        $path = realpath(__DIR__.'/'.$IMGDIR);
+        $path = $this->realpathimg;
         $Directory = new RecursiveDirectoryIterator($path);
         $Iterator = new RecursiveIteratorIterator($Directory);
         $tool = new commands\Tool();
@@ -42,9 +56,11 @@ class Bootstrap
         }
         $result=$tool::bubblesort($files);
         $jsonname = 'result.json';
-        $json = __DIR__.'/'.$JSONPATH.$jsonname;
+        $json = $this->pathjson.$jsonname;
         //$current = file_get_contents($json);
         $current = json_encode($result);
         file_put_contents($json, $current);
+        echo 'WELL DONE';
+        return true;
     }
 }
